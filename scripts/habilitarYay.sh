@@ -10,14 +10,14 @@ NORM="\033[0m"		#Volta para a cor padrão
 
 # Alias de instalação
 
-APPS="base-devel git" 		#Apps base para instalação do Yay
-GIT='git clone'				#Responsável por clonar o repositório
-NCONF='--noconfirm'			#Instalação sem confirmação
-REPO="https://aur.archlinux.org/yay.git" #Repositório
+APPS="base-devel git" 				#Apps base para instalação do Yay
+GIT='git clone'					#Responsável por clonar o repositório
+NCONF='--noconfirm'				#Instalação sem confirmação
+REPO="https://aur.archlinux.org/yay.git" 	#Repositório
 
 set -e #Interrompe, em caso de erro
 
-# Ininia instalação
+# Inicia instalação
 ETAPA1 () {
 echo -e "${CIAN}[ ] Este assistente habilitará o YAY em seu sistema" ${NORM}
 	sudo pacman -S --needed ${APPS} ${NCONF}
