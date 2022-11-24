@@ -23,7 +23,7 @@ VERI () {
 	RELEASE=`lsb_release -r`	#Identifica a versão da distro
 	if [[ $ID = "Distributor ID:	Arch" ]]; then
 		echo -e "${VERD}[*] Sistema suportado, instalação seguirá"
-		echo -e "${VERD}[*] $ID $RELEASE" ${NORM}
+		echo -e "${VERD}[*] $ID" ${NORM}
 		ATUALIZAR
 	else	
 		clear; echo -e "${VERM}[!] Sistema não suportado"
@@ -35,7 +35,7 @@ fi
 ATUALIZAR () {
 	echo -e "${CIAN}[ ] Atualizar sistema" ${NORM}
 		sudo pacman -Syyuu ${NCON}
-	echo -e "${VERD}[*] Sistema atualizado com sucesso\n" ${NORM}
+	echo -e "${VERD}[*] Sistema atualizado com sucesso" ${NORM}
 	BASE
 }
 
@@ -43,13 +43,13 @@ ATUALIZAR () {
 BASE () {
 	echo -e "\n${CIAN}[ ] Instalar base bspwm" ${NORM}
 		${PAC} bspwm sxhkd wget curl git rofi dunst feh thunar xfce4-terminal xorg-xsetroot \
-		networkmanager_dmenu networkmanager xfconf xsettingsd xfce4-power-manager ${NCON}
+		networkmanager xfconf xsettingsd xfce4-power-manager ${NCON}
 	echo -e "${VERD}[*] Base bspwm instalada" ${NORM}
-	APPSCOMPLE
+	COMP
 }
 
 # Responsável por instalar os apps complementares
-APPSCOMPLE () {
+COMP () {
 	echo -e "\n${CIAN}[ ] Instalar Apps complementares" ${NORM}
 		${PAC} geany xarchiver zip gzip unrar unzip tar thunar-archive-plugin arandr \
 		noto-fonts-emoji gnome-disk-utility catfish baobab meld ${NCON}
@@ -61,14 +61,14 @@ APPSCOMPLE () {
 ETAPA1 () {
 	echo -e "\n${CIAN}[ ] Habilitar YAY em seu sistema" ${NORM}
 		${PAC} base-devel git ${NCONF}
-	echo -e "${VERD}[*] Pré requisitos instalados (base-devel e git)\n" ${NORM}
+	echo -e "${VERD}[*] Pré requisitos instalados (base-devel e git)" ${NORM}
 
 	if [[ -d /tmp/yay ]]; then #Verifica se repositório já foi baixado
 		ETAPA2
 	else
 		echo -e "\n${CIAN}[ ] Baixar repositório ${REPO}" ${NORM}
 			cd /tmp/ && ${GIT} ${REPO}
-		echo -e "${VERD}[*] Repositório na pasta temporária\n" ${NORM}
+		echo -e "${VERD}[*] Repositório na pasta temporária" ${NORM}
 		ETAPA2
 fi
 }
@@ -87,7 +87,7 @@ ETAPA2 () {
 # Responsável por instalar os apps yay
 APPSCOMPLE () {
 	echo -e "\n${CIAN}[ ] Instalar Apps YAY" ${NORM}
-		${YAY} polybar ksuperkey ly xfce-polkit ${NCON} #/usr/lib/xfce-polkit/xfce-polkit
+		${YAY} polybar ksuperkey ly xfce-polkit networkmanager-dmenu-git ${NCON} #/usr/lib/xfce-polkit/xfce-polkit
 	echo -e "${VERD}[*] Apps YAY instalados\n" ${NORM}
 	
 	echo -e "\n${CIAN}[ ] Habilitar gestor de login Ly"
