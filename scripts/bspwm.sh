@@ -11,15 +11,15 @@ NORM="\033[0m"		#Volta para a cor padrão
 set -e #Termina, em caso de erro de execução
 
 # Alias de instalação
-PAC='sudo pacman -S --needed' 				#Comando de instalação pelo repositório oficial
-YAY='yay -S'								#Instalação pelo repositórioda comunidade
-NCON='--noconfirm'							#Instalar sem confirmação
-GIT='git clone'								#Responsável por clonar o repositório
-REPO="https://aur.archlinux.org/yay.git" 	#Repositório
+PAC='sudo pacman -S --needed' 			#Comando de instalação pelo repositório oficial
+YAY='yay -S'					#Instalação pelo repositórioda comunidade
+NCON='--noconfirm'				#Instalar sem confirmação
+GIT='git clone'					#Responsável por clonar o repositório
+REPO="https://aur.archlinux.org/yay.git"	#Repositório
 
 # Verificação da distro base
 VERI () {
-	ID=`lsb_release -i`			#Identifica qual é a distro
+	ID=`lsb_release -i`		#Identifica qual é a distro
 	RELEASE=`lsb_release -r`	#Identifica a versão da distro
 	if [[ $ID = "Distributor ID:	Arch" && $RELEASE = "Release:	22.04" ]]; then
 		echo -e "${VERD}[*] Sistema suportado, instalação seguirá"
