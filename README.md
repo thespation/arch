@@ -1,2 +1,4 @@
-# arch
-Repositório para scripts voltados ao Arch Linux
+# Arch
+Instalação pessoal.
+
+> Em desenvolvimento.
