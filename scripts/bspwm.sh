@@ -21,12 +21,12 @@ REPO="https://aur.archlinux.org/yay.git"	#Repositório
 VERI () {
 	ID=`lsb_release -i`		#Identifica qual é a distro
 	RELEASE=`lsb_release -r`	#Identifica a versão da distro
-	if [[ $ID = "Distributor ID:	Arch" && $RELEASE = "Release:	22.04" ]]; then
+	if [[ $ID = "Distributor ID:	Arch" ]]; then
 		echo -e "${VERD}[*] Sistema suportado, instalação seguirá"
 		echo -e "${VERD}[*] $ID $RELEASE" ${NORM}
 		ATUALIZAR
 	else	
-		clear echo -e "${VERM}[!] Sistema não suportado"
+		clear; echo -e "${VERM}[!] Sistema não suportado"
 		echo -e "[!] Esse script vou desenvolvido para rodar no Arch\n" ${NORM}
 fi
 }
