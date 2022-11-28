@@ -109,7 +109,7 @@ PERSONA () {
 PERSARCHC () {
 	curl -s https://raw.githubusercontent.com/thespation/dpux_bspwm/main/scripts/temas.sh | bash
 	curl -s https://raw.githubusercontent.com/thespation/dpux_bspwm/main/scripts/icones.sh | bash
-	echo -e "\n${VERD}[i] Final do script\n"
+	echo -e "\n${VERD}[i] Final do script\n" ${NORM}
 }
 
 # Iniciar verificação
