@@ -27,7 +27,7 @@ VERI () {
 		ATUALIZAR
 	else	
 		clear; echo -e "${VERM}[!] Sistema não suportado"
-		echo -e "[!] Esse script vou desenvolvido para rodar no Arch\n" ${NORM}
+		echo -e "[!] Esse script foi desenvolvido para rodar no Arch\n" ${NORM}
 fi
 }
 
