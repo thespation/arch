@@ -8,7 +8,7 @@ VERD="\033[0;32m"	#Deixa a saída na cor verde
 CIAN="\033[0;36m"	#Deixa a saída na cor ciano
 NORM="\033[0m"		#Volta para a cor padrão
 
-set -e #Termina, em caso de erro de execução
+#set -e #Termina, em caso de erro de execução
 
 # Alias de instalação
 PAC='sudo pacman -S --needed' 	#Comando de instalação pelo repositório oficial
@@ -22,8 +22,8 @@ VERI () {
 	ID=`lsb_release -i`		#Identifica qual é a distro
 	RELEASE=`lsb_release -r`	#Identifica a versão da distro
 	if [[ $ID = "Distributor ID:	Arch" ]]; then
-		echo -e "${VERD}[*] Sistema suportado, instalação seguirá"
-		echo -e "${VERD}[*] $ID" ${NORM}
+		echo -e "${VERD}[i] Sistema suportado, instalação seguirá"
+		echo -e "${VERD}[i] $ID" ${NORM}
 		ATUALIZAR
 	else	
 		clear; echo -e "${VERM}[!] Sistema não suportado"
@@ -33,7 +33,7 @@ fi
 
 # Responsável por atualizar os sistema antes da instalação da base
 ATUALIZAR () {
-	echo -e "${CIAN}[ ] Atualizar sistema" ${NORM}
+	echo -e "\n${CIAN}[ ] Atualizar sistema" ${NORM}
 		sudo pacman -Syyuu ${NCON}
 	echo -e "${VERD}[*] Sistema atualizado com sucesso\n" ${NORM}
 	BASE
