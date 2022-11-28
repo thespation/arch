@@ -41,9 +41,9 @@ ATUALIZAR () {
 
 # Responsável por instalar a base bspwm
 BASE () {
-	echo -e "\n${CIAN}[ ] Instalar base bspwm" ${NORM}
-		${PAC} bspwm sxhkd wget curl git rofi dunst feh thunar xfce4-terminal xorg-xsetroot \
-		networkmanager xfconf xsettingsd xfce4-power-manager ${NCON}
+	echo -e "${CIAN}[ ] Instalar base bspwm" ${NORM}
+		${PAC} bspwm sxhkd wget curl git rofi dunst feh thunar xfce4-terminal xorg-xsetroot nano \
+		networkmanager xfconf xsettingsd xfce4-power-manager xorg-server xorg-xinit xorg-apps ${NCON}
 	echo -e "${VERD}[*] Base bspwm instalada" ${NORM}
 	COMP
 }
@@ -52,21 +52,21 @@ BASE () {
 COMP () {
 	echo -e "\n${CIAN}[ ] Instalar Apps complementares" ${NORM}
 		${PAC} geany xarchiver zip gzip unrar unzip tar thunar-archive-plugin arandr \
-		noto-fonts-emoji gnome-disk-utility catfish baobab meld ${NCON}
+		noto-fonts-emoji gnome-disk-utility catfish baobab meld xdg-user-dirs ${NCON}
 	echo -e "${VERD}[*] Apps complementares instalados\n" ${NORM}
 	ETAPA1
 }
 
 # Habilitar yay
 ETAPA1 () {
-	echo -e "\n${CIAN}[ ] Habilitar YAY em seu sistema" ${NORM}
+	echo -e "${CIAN}[ ] Habilitar YAY em seu sistema" ${NORM}
 		${PAC} base-devel git ${NCONF}
 	echo -e "${VERD}[*] Pré requisitos instalados (base-devel e git)\n" ${NORM}
 
 	if [[ -d /tmp/yay ]]; then #Verifica se repositório já foi baixado
 		ETAPA2
 	else
-		echo -e "\n${CIAN}[ ] Baixar repositório ${REPO}" ${NORM}
+		echo -e "${CIAN}[ ] Baixar repositório ${REPO}" ${NORM}
 			cd /tmp/ && ${GIT} ${REPO}
 		echo -e "${VERD}[*] Repositório na pasta temporária\n" ${NORM}
 		ETAPA2
@@ -74,11 +74,11 @@ fi
 }
 
 ETAPA2 () {
-	echo -e "\n${CIAN}[ ] Iniciar processo de instalação" ${NORM}
+	echo -e "${CIAN}[ ] Iniciar processo de instalação" ${NORM}
 		cd /tmp/yay && makepkg -si &&
 	echo -e "${VERD}[*] Yay instalado e habilitado para uso\n" ${NORM}
 
-	echo -e "\n${CIAN}[ ] Iniciar processo de atualização" ${NORM}
+	echo -e "${CIAN}[ ] Iniciar processo de atualização" ${NORM}
 		yay -Syu ${NCONF}
 	echo -e "${VERD}[*] Base YAY Atualizada\n" ${NORM}
 	APPSCOMPLE
@@ -86,13 +86,22 @@ ETAPA2 () {
 
 # Responsável por instalar os apps yay
 APPSCOMPLE () {
-	echo -e "\n${CIAN}[ ] Instalar Apps YAY" ${NORM}
+	echo -e "${CIAN}[ ] Instalar Apps YAY" ${NORM}
 		${YAY} polybar ksuperkey ly xfce-polkit networkmanager-dmenu-git alacritty-git ${NCON} #/usr/lib/xfce-polkit/xfce-polkit
 	echo -e "${VERD}[*] Apps YAY instalados\n" ${NORM}
 	
-	echo -e "\n${CIAN}[ ] Habilitar gestor de login Ly"
+	echo -e "${CIAN}[ ] Habilitar gestor de login Ly"
 		sudo systemctl enable ly
 	echo -e "${VERD}[*] Ly habilitado com sucesso/n"
+	PERSONA
+}
+
+# Responsável por instalar os apps yay
+PERSONA () {
+	echo -e "${CIAN}[ ] Iniciar personalizações" ${NORM}
+	cp /etc/X11/xinit/xinitrc ~/.xinitrc
+	xdg-user-dirs-update
+	echo -e "${VERD}[ ] Personalizações concluídas/n" ${NORM}
 	PERSARCHC
 }
 
@@ -100,12 +109,6 @@ APPSCOMPLE () {
 PERSARCHC () {
 	curl -s https://raw.githubusercontent.com/thespation/dpux_bspwm/main/scripts/temas.sh | bash
 	curl -s https://raw.githubusercontent.com/thespation/dpux_bspwm/main/scripts/icones.sh | bash
-	
-	#bash < <(curl -s https://raw.githubusercontent.com/thespation/dpux_bspwm/main/scripts/temas.sh)
-	#wget -q https://raw.githubusercontent.com/thespation/dpux_bspwm/main/scripts/temas.sh -O -
-	#wget -O - https://raw.githubusercontent.com/thespation/dpux_bspwm/main/scripts/temas.sh | bash
-	#fonte: https://stackoverflow.com/questions/5735666/execute-bash-script-from-url
-	
 	echo -e "\n${VERD}[i] Final do script\n"
 }
 
