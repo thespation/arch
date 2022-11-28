@@ -87,7 +87,7 @@ ETAPA2 () {
 # Responsável por instalar os apps yay
 APPSCOMPLE () {
 	echo -e "${CIAN}[ ] Instalar Apps YAY" ${NORM}
-		${YAY} polybar ksuperkey ly xfce-polkit networkmanager-dmenu-git alacritty-git ${NCON} #/usr/lib/xfce-polkit/xfce-polkit
+		${YAY} polybar ksuperkey ly-git xfce-polkit networkmanager-dmenu-git alacritty-git ${NCON} #/usr/lib/xfce-polkit/xfce-polkit
 	echo -e "${VERD}[*] Apps YAY instalados\n" ${NORM}
 	
 	echo -e "${CIAN}[ ] Habilitar gestor de login Ly"
