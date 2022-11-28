@@ -66,10 +66,10 @@ ETAPA1 () {
 	if [[ -d /tmp/yay ]]; then #Verifica se repositório já foi baixado
 		ETAPA2
 	else
-		echo -e "${CIAN}[ ] Baixar repositório ${REPO}" ${NORM}
-			cd /tmp/ && ${GIT} ${REPO}
-		echo -e "${VERD}[*] Repositório na pasta temporária\n" ${NORM}
-		ETAPA2
+	echo -e "${CIAN}[ ] Baixar repositório ${REPO}" ${NORM}
+		cd /tmp/ && ${GIT} ${REPO}
+	echo -e "${VERD}[*] Repositório na pasta temporária\n" ${NORM}
+	ETAPA2
 fi
 }
 
@@ -91,7 +91,7 @@ APPSCOMPLE () {
 	echo -e "${VERD}[*] Apps YAY instalados\n" ${NORM}
 	
 	echo -e "${CIAN}[ ] Habilitar gestor de login Ly"
-		sudo systemctl enable ly
+		sudo systemctl enable ly.service
 	echo -e "${VERD}[*] Ly habilitado com sucesso/n"
 	PERSONA
 }
