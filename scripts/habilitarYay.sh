@@ -29,6 +29,7 @@ else
 	echo -e "${CIAN}[ ] Baixar repositório ${REPO}" ${NORM}
 		cd /tmp/ && ${GIT} ${REPO}
 	echo -e "${VERD}[*] Repositório na pasta temporária" ${NORM}
+	ETAPA2
 fi
 }
 
